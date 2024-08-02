@@ -20,6 +20,7 @@
 
 <img width="508" alt="스크린샷 2024-08-02 오후 11 12 17" src="https://github.com/user-attachments/assets/fd4cd11e-e30a-49fb-8616-a25837c81582">
 
+<img width="512" alt="image" src="https://github.com/user-attachments/assets/47201cc4-6118-4976-8612-3668ff551bc6">
 
 # 4-5 부서별 월별 접속자 수!
 
