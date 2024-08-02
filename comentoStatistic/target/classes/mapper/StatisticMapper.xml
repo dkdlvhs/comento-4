@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.comentoStatistic.dao.StatisticMapper">
+
+    <select id="selectYearLogin" parameterType="string" resultType="YearCountDto">
+        select concat('20', #{year}) as year, count(*) as totCnt
+        from statistic13.requestInfo ri
+        where left(ri.createDate, 2) = #{year};
+    </select>
+
+    <select id="selectYearMonthLogin" parameterType="string" resultType="YearMonthCountDto">
+        select concat('20', #{yearMonth}) as yearMonth, count(*) as totCnt
+        from statistic13.requestInfo ri
+        where left(ri.createDate, 4) = #{yearMonth};
+    </select>
+
+    <select id="selectYearMonthDayLogin" parameterType="string" resultType="YearMonthDayCountDto">
+        select concat('20', #{yearMonthDay}) as yearMonthDay, count(*) as totCnt
+        from statistic13.requestInfo ri
+        where left(ri.createDate, 6) = #{yearMonthDay};
+    </select>
+
+    <!-- 전체 로그인 수 -->
+    <select id="selectTotalLoginCount" parameterType="int">
+        select count(*)
+        from statistic13.requestInfo;
+    </select>
+
+    <!-- 로그인이 있는 총 일수 -->
+    <select id="selectDistinctDaysCount" parameterType="int">
+        select count(distinct left(createDate, 6))
+        from statistic13.requestInfo;
+    </select>
+
+    <select id="selectDepartmentMonthlyLogin" parameterType="map" resultType="DepartmentMonthCountDto">
+        SELECT
+        concat('20', #{yearMonth}) as yearMonth,
+        u.HR_ORGAN AS department,
+        COUNT(*) AS totCnt
+        FROM statistic13.requestInfo ri
+        JOIN statistic13.user u ON ri.userID = u.userID
+        WHERE LEFT(ri.createDate, 4) = #{yearMonth}
+        AND u.HR_ORGAN = #{department}
+        GROUP BY concat('20', #{yearMonth}), u.HR_ORGAN;
+    </select>
+
+    <select id="selectMonthLoginsExcludingHolidays" parameterType="string" resultType="YearMonthCountDto">
+        SELECT
+        concat('20', #{yearMonth}) as yearMonth,
+        COUNT(*) AS totCnt
+        FROM statistic13.requestInfo ri
+        LEFT JOIN statistic13.holidays h ON LEFT(ri.createDate, 6) = LEFT(h.holiday, 6)
+        WHERE h.holiday IS NULL  -- 휴일이 아닌 날짜만 선택
+        AND LEFT(ri.createDate, 4) = #{yearMonth}
+        GROUP BY concat('20', #{yearMonth});
+    </select>
+
+</mapper>
+
