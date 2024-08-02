@@ -16,4 +16,12 @@
 
 
 # 4-4 휴일을 제외한 로그인 수
+
 # 4-5 부서별 월별 접속자 수
+user 테이블에 user 들의 팀을 임의로 지정했다.
+
+
+<img width="508" alt="스크린샷 2024-08-02 오후 11 06 36" src="https://github.com/user-attachments/assets/c74b4403-d2c3-412f-a0d6-14ec1c4e7ab3">
+
+
+<img width="454" alt="스크린샷 2024-08-02 오후 11 02 56" src="https://github.com/user-attachments/assets/f5195833-3e0a-4627-bec2-faa4982dc3e4">
