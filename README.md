@@ -16,8 +16,13 @@
 
 
 # 4-4 휴일을 제외한 로그인 수
+임의로 holidays table을 생성했고 임의의 휴일을 추가했다.
 
-# 4-5 부서별 월별 접속자 수
+<img width="508" alt="스크린샷 2024-08-02 오후 11 12 17" src="https://github.com/user-attachments/assets/fd4cd11e-e30a-49fb-8616-a25837c81582">
+
+
+# 4-5 부서별 월별 접속자 수!
+
 user 테이블에 user 들의 팀을 임의로 지정했다.
 
 
